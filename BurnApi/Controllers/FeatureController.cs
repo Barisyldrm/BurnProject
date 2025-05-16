@@ -24,7 +24,7 @@ namespace BurnApi.Controllers
         [HttpGet]
         public IActionResult FeatureList()
         {
-            var value = _mapper.Map<List<ResultDiscountDto>>(_featureService.TGetAll());
+            var value = _mapper.Map<List<ResultFeatureDto>>(_featureService.TGetAll());
             return Ok(value);
         }
         [HttpPost]
@@ -42,14 +42,14 @@ namespace BurnApi.Controllers
             });
             return Ok("Öne Çıkan Bilgisi eklendi");
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult DeleteFeature(int id)
         {
             var value = _featureService.TGetByID(id);
             _featureService.TDelete(value);
             return Ok("Öne Çıkan Bilgisi silindi");
         }
-        [HttpGet("GetFeature")]
+        [HttpGet("{id}")]
         public IActionResult GetFeature(int id)
         {
             var value = _featureService.TGetByID(id);

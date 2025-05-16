@@ -40,14 +40,14 @@ namespace BurnApi.Controllers
             });
             return Ok("Müşteri Yorum Bilgisi eklendi");
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult DeleteTestimonial(int id)
         {
             var value = _testimonialService.TGetByID(id);
             _testimonialService.TDelete(value);
             return Ok("Müşteri Yorum Bilgisi silindi");
         }
-        [HttpGet("GetTestimonial")]
+        [HttpGet("{id}")]
         public IActionResult GetTestimonial(int id)
         {
             var value = _testimonialService.TGetByID(id);
