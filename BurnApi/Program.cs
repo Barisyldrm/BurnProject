@@ -3,9 +3,22 @@ using Burn.BusinessLayer.Concrete;
 using Burn.DataAccessLayer.Abstract;
 using Burn.DataAccessLayer.Concrete;
 using Burn.DataAccessLayer.EntityFramework;
+using BurnApi.Hubs;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddCors(opt =>
+{
+	opt.AddPolicy("CorsPolicy", builder =>
+	{
+		builder.AllowCredentials()
+			  .SetIsOriginAllowed((host) => true)
+			  .AllowAnyMethod()
+			  .AllowAnyHeader();
+	});
+});
+builder.Services.AddSignalR();
 
 builder.Services.AddDbContext<BurnContext>();
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
@@ -52,10 +65,14 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCors("CorsPolicy");
+
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
 app.MapControllers();
+app.MapHub<SignalRHub>("/signalrhub");
 
 app.Run();
+
