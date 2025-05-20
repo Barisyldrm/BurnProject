@@ -1,0 +1,18 @@
+﻿--CategoryCount
+--ProductCount
+--Aktif Kategori Sayısı
+--Pasif Kategori Sayısı
+
+--Kategori Adına göre ürün sayısı1
+--Kategori Adına göre ürün sayısı2
+--Ortalama Ürün fiyatı
+--En Yüksek Ürün fiyatı
+--En Düşük Ürün fiyatı
+-Son Eklenen Kategori
+
+--Toplam Sipariş Sayısı
+--Aktif Siparis Sayısı
+--Son Sipariş Tutarı
+--Kasadaki Tutar
+--Bugünkü Kazanç
+--Masa Sayısı

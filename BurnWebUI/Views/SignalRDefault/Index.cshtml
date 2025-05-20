@@ -23,9 +23,10 @@
                                     .withUrl("https://localhost:7009/SignalRHub")
                                     .build();
                                     $("#connstatus").text(connection.state);
-                                    connection.invoke("SendCategoryCount");
+                                    
                                     connection.start().then(()=>{
                                         $("#connstatus").text(connection.state);
+                                    connection.invoke("SendCategoryCount");
                                     }).catch( (err) => {
                                         console.log(err)
                                     });

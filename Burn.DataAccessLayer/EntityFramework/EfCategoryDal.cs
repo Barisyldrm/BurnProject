@@ -15,5 +15,23 @@ namespace Burn.DataAccessLayer.EntityFramework
         public EfCategoryDal(BurnContext context) : base(context)
         {
         }
-    }
+
+		public int ActiveCategoryCount()
+		{
+			using var context = new BurnContext();
+			return context.Categories.Where(x => x.Status == true).Count();
+		}
+
+		public int CategoryCount()
+		{
+			using var context = new BurnContext();
+			return context.Categories.Count();
+		}
+
+		public int PassiveCategoryCount()
+		{
+			using var context = new BurnContext();
+			return context.Categories.Where(x => x.Status == false).Count();
+		}
+	}
 }
